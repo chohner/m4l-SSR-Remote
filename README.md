@@ -32,7 +32,10 @@ The following is a snippet of the modified `mxj net.tcp.send` java source.
 
 ```java
 send(Atom args[]) {
-    	System.setProperty("line.separator", "\0");
+    	// Force binary 0 linebreak for SSR's TCP interface
+		System.setProperty("line.separator", "\0");
+		
+		// Unmodified code below
 		
     	declareIO(1, 3);
     	setInletAssist(0, "(anything) message to send to group");
