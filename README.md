@@ -16,9 +16,10 @@ To easily access the m4l devices from Live, add both files `m4l_ssr_remote_maste
 ### Correct line ending
 To satisfy SSR's line ending (binary zero, `\0`), the default has to be changed in the `mxj net.tcp.send` object. This has to be done only once.
 
-You can either do this yourself by inserting a single line and recompiling or simply using the files provided in the `modified mxj net.tcp.send` folder. Please read the provided README.txt!
+You can either do this yourself by inserting a single line and recompiling or simply using the files provided in the `modified mxj net.tcp.send` folder (recommended). Read the provided README.txt for correct file locations and please back up your original files!
 
-To to it yourself instead, do the following:
+#### DYI 
+If you don't want to use the modified java class, follow the step-by-step instructions below to do it yourself.
 
 * Open `m4l_ssr_remote_master.amxd`, disable presentation mode, double click the `p tcpClientMXJ` object, and hit the `viewsource` message box.
 * Inside the `send(Atom args[]) {}` declaration, you need to add the following line: 
@@ -32,7 +33,7 @@ System.setProperty("line.separator", "\0");
 * Go to `Java > Open Compile Window...` and hit `Compile`.
 * Ideally you should receive no errors and can safely close all windows.
 
-The following is a snippet of the modified `mxj net.tcp.send` java source.
+Below a snippet of the modified `mxj net.tcp.send` java source:
 
 ```java
 send(Atom args[]) {
@@ -54,8 +55,11 @@ send(Atom args[]) {
     	ts.setFailureCallback(this, "failure");
 }
 ```
+#### Warning!
+Please be aware that this does change the default behaviour of `net.tcp.send`. This may cause unexpected behaviour when using it in other patches.
 
-Please be aware that this does change the default behaviour of net.tcp.send. To reverse the line ending to the systems default, simply remove the pre-compiled files and restore the original files or remove the inserted line and recompile. A restart of Max might be required
+#### Removing modifications
+To reverse the line ending to the systems default, simply remove the pre-compiled files and restore the original files or remove the inserted line and recompile. A restart of Max might be required.
 
 ### Enabling audio
 To route audio from Live to SSR, you need to add live input sources to SSR. A possible source declaration may look like this:
@@ -76,5 +80,7 @@ You can use both automation in the timeline as well as m4l devices such as the L
 
 ### Have fun!
 Christoph Hohnerlein
+
 mail@chrisclock.com
+
 chohner@ccrma.stanford.edu
