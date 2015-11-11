@@ -13,8 +13,12 @@ Allows the user to place a source in 2D space and let the SSR renderer (http://s
 ### Adding to Ableton Live user library
 To easily access the m4l devices from Live, add both files `m4l_ssr_remote_master.amxd` and `m4l_ssr_remote_object.amxd` to the Live user library. The default location is `~/Music/Ableton/User Library/Presets/Audio Effects/Max Audio Effect`.
 
-### Important!
+### Correct line ending
 To satisfy SSR's line ending (binary zero, `\0`), the default has to be changed in the `mxj net.tcp.send` object. This has to be done only once.
+
+You can either do this yourself by inserting a single line and recompiling or simply using the files provided in the `modified mxj net.tcp.send` folder. Please read the provided README.txt!
+
+To to it yourself instead, do the following:
 
 * Open `m4l_ssr_remote_master.amxd`, disable presentation mode, double click the `p tcpClientMXJ` object, and hit the `viewsource` message box.
 * Inside the `send(Atom args[]) {}` declaration, you need to add the following line: 
@@ -50,6 +54,8 @@ send(Atom args[]) {
     	ts.setFailureCallback(this, "failure");
 }
 ```
+
+Please be aware that this does change the default behaviour of net.tcp.send. To reverse the line ending to the systems default, simply remove the pre-compiled files and restore the original files or remove the inserted line and recompile. A restart of Max might be required
 
 ### Enabling audio
 To route audio from Live to SSR, you need to add live input sources to SSR. A possible source declaration may look like this:
