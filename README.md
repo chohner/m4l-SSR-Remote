@@ -14,7 +14,7 @@ Allows the user to place a source in 2D space and let the SSR renderer (http://s
 To easily access the m4l devices from Live, add both files `m4l_ssr_remote_master.amxd` and `m4l_ssr_remote_object.amxd` to the Live user library. The default location is `~/Music/Ableton/User Library/Presets/Audio Effects/Max Audio Effect`.
 
 ### Correct line ending
-**UPDATE** In newer versions of SSR (compiled after [commit d664f4c6df0c5aa6bd69208c02d909ddf73cab3b](https://github.com/SoundScapeRenderer/ssr/commit/d664f4c6df0c5aa6bd69208c02d909ddf73cab3b)) it is enough to start SSR with the parameter `--end-of-message-character=13` in order to interface with Max MSP.  You may skip the following paragraphs.
+**UPDATE** In newer versions of SSR (compiled after [commit d664f4c6df0c5aa6bd69208c02d909ddf73cab3b](https://github.com/SoundScapeRenderer/ssr/commit/d664f4c6df0c5aa6bd69208c02d909ddf73cab3b)) it is enough to start SSR with the parameter `--end-of-message-character=10` in order to interface with Max MSP.  You may skip the following paragraphs.
 
 
 To satisfy SSR's line ending (binary zero, `\0`), the default has to be changed in the `mxj net.tcp.send` object. This has to be done only once.
