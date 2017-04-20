@@ -82,8 +82,4 @@ You can then use Jack (see http://jackaudio.org or http://brewformulas.org/Jack)
 You can use both automation in the timeline as well as m4l devices such as the LFO to modulate the source position.
 
 ### Have fun!
-Christoph Hohnerlein
-
-mail@chrisclock.com
-
-chohner@ccrma.stanford.edu
+mail@chohner.com
